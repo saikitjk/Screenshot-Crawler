@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/saikitjk/Screenshot-Crawler#readme",
   "dependencies": {
+    "fs": "^0.0.1-security",
     "puppeteer-cluster": "^0.22.0"
   }
 }
