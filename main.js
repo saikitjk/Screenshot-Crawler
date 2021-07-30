@@ -1,5 +1,6 @@
 const { Cluster } = require("puppeteer-cluster");
 var fs = require("fs");
+var path = require("path");
 
 var urls = [
   "https://www.google.com/",
@@ -59,27 +60,23 @@ var sessID = ranGen();
     const clickDelay = 3000;
     const waitTimeout = 500000;
 
-    async function timeout(ms) {
-      return new Promise((resolve) => setTimeout(resolve, ms));
-    }
+    // async function timeout(ms) {
+    //   return new Promise((resolve) => setTimeout(resolve, ms));
+    // }
 
     await page.goto(url, { waitUntil: "networkidle0", timeout: 0 });
     // const path = url.replace(/[^a-zA-Z]/g, "_") + ".png";
     //await page.setViewport({ width: 1024, height: 768 });
     let frames = await page.frames();
 
-    await page.screenshot({
-      fullPage: true,
-      path: `screenshot${worker.id}.png`,
-    });
-
     // await page.screenshot({
     //   fullPage: true,
     //   path: `screenshot${worker.id}.png`,
     // });
+
     await page.screenshot({
       fullPage: true,
-      path: `${sessID}/${worker.id}.png`,
+      path: `${sessID}/screenshot${worker.id}.png`,
     });
 
     console.log(`Screenshot of ${url} saved`);
